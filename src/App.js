@@ -11,6 +11,7 @@ const Stack = createNativeStackNavigator();
 
 import Home from './pages/home';
 import Checklist from './pages/checklist';
+import {StoreProvider} from './store/context';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -19,16 +20,18 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <SafeAreaView style={{flex: 1}}>
-          <StatusBar
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={backgroundColor}
-          />
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Checklist" component={Checklist} />
-          </Stack.Navigator>
-        </SafeAreaView>
+        <StoreProvider>
+          <SafeAreaView style={{flex: 1}}>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+              backgroundColor={backgroundColor}
+            />
+            <Stack.Navigator>
+              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="Checklist" component={Checklist} />
+            </Stack.Navigator>
+          </SafeAreaView>
+        </StoreProvider>
       </NavigationContainer>
     </SafeAreaProvider>
   );
