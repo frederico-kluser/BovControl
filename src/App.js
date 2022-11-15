@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -12,10 +12,17 @@ const Stack = createNativeStackNavigator();
 import Home from './pages/home';
 import Checklist from './pages/checklist';
 import {StoreProvider} from './store/context';
+import getRealm from './database/realm';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundColor = isDarkMode ? Colors.darker : Colors.lighter;
+
+  useEffect(() => {
+    getRealm().then(realm => {
+      console.log('realm', realm);
+    });
+  }, []);
 
   return (
     <SafeAreaProvider>
