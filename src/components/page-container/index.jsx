@@ -1,9 +1,12 @@
 import React from 'react';
+import Loader from '../loader';
 import Container from './styled';
 
-const PageContainer = ({ children }) => (
+const PageContainer = ({ children, loading }) => (
   <Container>
-    { children }
+    <Loader loading={loading}>
+      { children }
+    </Loader>
   </Container>
 );
 
