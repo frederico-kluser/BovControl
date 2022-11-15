@@ -1,26 +1,18 @@
-import React, {useState} from 'react';
-import {Switch} from '@rneui/themed';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from 'react';
+import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Home from './pages/home';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1,
   };
-
-  const [checked, setChecked] = useState(false);
 
   return (
     <SafeAreaProvider>
@@ -29,20 +21,7 @@ const App = () => {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Text>Hello World!!</Text>
-            <Switch
-              value={checked}
-              onValueChange={value => setChecked(value)}
-            />
-          </View>
-        </ScrollView>
+        <Home />
       </SafeAreaView>
     </SafeAreaProvider>
   );
