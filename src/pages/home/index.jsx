@@ -2,24 +2,21 @@ import React, { useContext, useEffect } from 'react';
 import { Button, Text } from '@rneui/themed';
 import PageContainer from '../../components/page-container';
 import { StoreContext } from '../../store/context';
+import getRealm from '../../database/realm';
 
 const Home = ({ navigation }) => {
   const [loading, setLoading] = React.useState(true);
-  const { farmer, checklist, showModal } = useContext(StoreContext);
+  // const { showModal } = useContext(StoreContext);
 
   useEffect(() => {
-    console.log('farmer :', farmer);
-    console.log('checklist :', checklist);
-    setTimeout(() => {
-
+    getRealm().then(realm => {
+      console.log('realm', realm);
       setLoading(false);
-      if (!farmer) {
-        showModal('test title', 'test content', () => {
-          console.log('onBackdropPress');
-        });
+
+      if (!Object.keys(realm).length) {
+        navigation.navigate('Checklist', {});
       }
-      
-    }, 1000);
+    });
   }, []);
 
   return (

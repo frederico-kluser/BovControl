@@ -10,7 +10,6 @@ const PageContainer = ({
     loading, 
   }) => {
   const { modal } = useContext(StoreContext);
-  console.log('modal :', modal);
   const { visible, title, content, onBackdropPress } = modal;
 
   return (
