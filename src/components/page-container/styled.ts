@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.View`
-  flex: 1;
-`;
-
-export const Title = styled.Text`
-  font-size: 20px;
-  color: black;
+  padding: 16px;
 `;
 
 export default Container;

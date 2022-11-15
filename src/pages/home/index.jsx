@@ -1,17 +1,25 @@
 import React from 'react';
-import { Button } from '@rneui/themed';
-import Container, {Title} from './styled';
+import { Button, Text } from '@rneui/themed';
+import PageContainer from '../../components/page-container';
 
-const Home = ({ navigation }) => (
-  <Container>
-    <Title>Hello World!!</Title>
-    <Button
-      title="Go to Checklist Page"
-      onPress={() =>
-        navigation.navigate('Checklist', {})
-      }
-    />
-  </Container>
-);
+const Home = ({ navigation }) => {
+  const [loading, setLoading] = React.useState(true);
+
+  return (
+    <PageContainer>
+      {loading ? (
+        <Text>Loading...</Text>
+      ) : (<>
+        <Text>Hello World!!</Text>
+        <Button
+          title="Go to Checklist Page"
+          onPress={() =>
+            navigation.navigate('Checklist', {})
+          }
+          />
+      </>)}
+    </PageContainer>
+  );
+};
 
 export default Home;
