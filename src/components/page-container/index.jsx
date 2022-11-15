@@ -1,13 +1,32 @@
-import React from 'react';
-import Loader from '../loader';
-import Container from './styled';
+import React, { useContext } from 'react';
+import { StoreContext } from '../../store/context';
+import theme from '../../style/theme';
 
-const PageContainer = ({ children, loading }) => (
-  <Container>
-    <Loader loading={loading}>
-      { children }
-    </Loader>
-  </Container>
-);
+import Loader from '../loader';
+import Container, { Modal, ModalContent, ModalTitle } from './styled';
+
+const PageContainer = ({ 
+    children, 
+    loading, 
+  }) => {
+  const { modal } = useContext(StoreContext);
+  console.log('modal :', modal);
+  const { visible, title, content, onBackdropPress } = modal;
+
+  return (
+    <Container>
+      <Loader loading={loading}>
+        { children }
+      </Loader>
+      <Modal
+        isVisible={visible}
+        onBackdropPress={onBackdropPress}
+      >
+        <ModalTitle title={title} titleStyle={{ color: theme.colors.text }} />
+        <ModalContent>{ content }</ModalContent>
+      </Modal>
+    </Container>
+  );
+};
 
 export default PageContainer;
