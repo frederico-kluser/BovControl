@@ -7,12 +7,15 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 const Stack = createNativeStackNavigator();
+import {StoreProvider} from './store/context';
 
 import Home from './pages/home';
 import Checklist from './pages/checklist';
-import {StoreProvider} from './store/context';
 import CreateUser from './pages/createUser';
+
+import Modal from './components/modal';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -32,6 +35,7 @@ const App = () => {
               <Stack.Screen name="Checklist" component={Checklist} />
               <Stack.Screen name="Create User" component={CreateUser} />
             </Stack.Navigator>
+            <Modal />
           </SafeAreaView>
         </StoreProvider>
       </NavigationContainer>
