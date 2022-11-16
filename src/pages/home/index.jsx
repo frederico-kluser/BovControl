@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
       console.log('realm', realm);
       setLoading(false);
 
-      if (!Object.keys(realm).length) {
+      if (!Object.keys(realm.farmer).length) {
         navigation.reset({
           index: 0,
           routes: [{ name: 'Create User' }],
