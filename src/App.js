@@ -12,6 +12,7 @@ const Stack = createNativeStackNavigator();
 import Home from './pages/home';
 import Checklist from './pages/checklist';
 import {StoreProvider} from './store/context';
+import CreateUser from './pages/createUser';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,6 +30,7 @@ const App = () => {
             <Stack.Navigator initialRouteName="BovControl">
               <Stack.Screen name="BovControl" component={Home} />
               <Stack.Screen name="Checklist" component={Checklist} />
+              <Stack.Screen name="Create User" component={CreateUser} />
             </Stack.Navigator>
           </SafeAreaView>
         </StoreProvider>

@@ -14,7 +14,10 @@ const Home = ({ navigation }) => {
       setLoading(false);
 
       if (!Object.keys(realm).length) {
-        navigation.navigate('Checklist', {});
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Create User' }],
+        });
       }
     });
   }, []);
