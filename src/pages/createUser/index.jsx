@@ -29,23 +29,25 @@ const CreateUser = ({ navigation }) => {
     ]));
   }, [name, farmName, farmCity]);
 
+  const handleCreateUser = async () => {
+    await createFarmer({
+      _id: 1,
+      name,
+      farm_name: farmName,
+      farm_city: farmCity,
+    });
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'BovControl' }],
+    });
+  };
+
   return (
     <PageContainer>
       <Input placeholder='Name' onChangeText={setName} value={name} />
       <Input placeholder='Farm Name' onChangeText={setFarmName} value={farmName} />
       <Input placeholder='Farm City' onChangeText={setFarmCity} value={farmCity} />
-      <Button title="Register" loading={false} disabled={!validForm} onPress={async () => {
-        await createFarmer({
-          _id: 1,
-          name,
-          farm_name: farmName,
-          farm_city: farmCity,
-        })
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'BovControl' }],
-        });
-      }} />
+      <Button title="Register" loading={false} disabled={!validForm} onPress={handleCreateUser} />
     </PageContainer>
   );
   };
