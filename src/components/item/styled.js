@@ -10,4 +10,6 @@ export const IconButtom = styled.TouchableOpacity`
   top: 0;
 `;
 
+export const ContentButton = styled.TouchableOpacity``;
+
 export default Container;

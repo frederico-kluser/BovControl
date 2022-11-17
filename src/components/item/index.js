@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Icon, ListItem} from '@rneui/themed';
-import Container, {IconButtom} from './styled';
+import Container, {ContentButton, IconButtom} from './styled';
 
 const Item = ({
   amount_of_milk_produced,
@@ -21,17 +21,22 @@ const Item = ({
           }}>
           <Icon name="pencil" type="font-awesome" />
         </IconButtom>
-        <ListItem.Title>{type}</ListItem.Title>
-        <ListItem.Subtitle>
-          Number of cows head: {number_of_cows_head}
-        </ListItem.Subtitle>
-        <ListItem.Subtitle>
-          Amount of milk produced: {amount_of_milk_produced}
-        </ListItem.Subtitle>
-        <ListItem.Subtitle>
-          Had supervision: {had_supervision ? 'Yes' : 'No'}
-        </ListItem.Subtitle>
-        <ListItem.Subtitle>Supervision name: {to__name}</ListItem.Subtitle>
+        <ContentButton
+          onPress={() => {
+            navigation.navigate('Checklist View', {id});
+          }}>
+          <ListItem.Title>{type}</ListItem.Title>
+          <ListItem.Subtitle>
+            Number of cows head: {number_of_cows_head}
+          </ListItem.Subtitle>
+          <ListItem.Subtitle>
+            Amount of milk produced: {amount_of_milk_produced}
+          </ListItem.Subtitle>
+          <ListItem.Subtitle>
+            Had supervision: {had_supervision ? 'Yes' : 'No'}
+          </ListItem.Subtitle>
+          <ListItem.Subtitle>Supervision name: {to__name}</ListItem.Subtitle>
+        </ContentButton>
       </ListItem.Content>
     </ListItem>
   </Container>

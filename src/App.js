@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 
 import Home from './pages/Home';
-import Checklist from './pages/Checklist';
+import ChecklistView from './pages/ChecklistView';
 import CreateUser from './pages/CreateUser';
 import ChecklistManagement from './pages/ChecklistManagement';
 
@@ -30,7 +30,7 @@ const App = () => {
             />
             <Stack.Navigator initialRouteName="BovControl">
               <Stack.Screen name="BovControl" component={Home} />
-              <Stack.Screen name="Checklist" component={Checklist} />
+              <Stack.Screen name="Checklist View" component={ChecklistView} />
               <Stack.Screen name="Create User" component={CreateUser} />
               <Stack.Screen
                 name="Checklist Management"
