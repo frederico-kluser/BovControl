@@ -1,5 +1,7 @@
 import React, {useContext} from 'react';
+
 import {StoreContext} from '../../store/context';
+
 import theme from '../../style/theme';
 import Container, {ModalContent, ModalTitle} from './styled';
 

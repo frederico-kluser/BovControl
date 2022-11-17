@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
-import PageContainer from '../../components/page-container';
-
-import {Button, Input} from '@rneui/themed';
-import {useEffect, useState} from 'react';
-import Select from '../../components/select';
+import PageContainer from '../../components/PageContainer';
+import Select from '../../components/Select';
 
 import checkForm from '../../utils/form';
 import getRealm, {createChecklist, updateChecklist} from '../../database/realm';
 import {StoreContext} from '../../store/context';
+
+import {Button, Input} from '@rneui/themed';
 
 const ChecklistManagement = ({navigation, route}) => {
   const {showModal} = useContext(StoreContext);

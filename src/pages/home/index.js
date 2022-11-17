@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react';
-import {Button, Text} from '@rneui/themed';
-import PageContainer from '../../components/page-container';
+
+import PageContainer from '../../components/PageContainer';
+import Item from '../../components/Item';
+
 import getRealm from '../../database/realm';
-import Item from '../../components/item';
+
+import {Button, Text} from '@rneui/themed';
 import Container from './styled';
 
 const Home = ({navigation}) => {

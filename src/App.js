@@ -1,22 +1,19 @@
 import React from 'react';
-
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-const Stack = createNativeStackNavigator();
-import {StoreProvider} from './store/context';
-
-import Home from './pages/home';
-import Checklist from './pages/checklist';
-import CreateUser from './pages/createUser';
+import Home from './pages/Home';
+import Checklist from './pages/Checklist';
+import CreateUser from './pages/CreateUser';
 import ChecklistManagement from './pages/ChecklistManagement';
 
-import Modal from './components/modal';
+import Modal from './components/Modal';
+
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
+import {StoreProvider} from './store/context';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';

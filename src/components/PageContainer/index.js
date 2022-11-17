@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Loader from '../loader';
+import Loader from '../Loader';
+
 import Container from './styled';
 
 const PageContainer = ({children, loading}) => {

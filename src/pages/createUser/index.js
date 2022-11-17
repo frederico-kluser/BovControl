@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
-import PageContainer from '../../components/page-container';
+import PageContainer from '../../components/PageContainer';
 
-import {Button, Input} from '@rneui/themed';
-import {useContext, useState} from 'react';
-import {useEffect} from 'react';
 import {StoreContext} from '../../store/context';
 import checkForm from '../../utils/form';
 import {createFarmer} from '../../database/realm';
+
+import {Button, Input} from '@rneui/themed';
 
 const CreateUser = ({navigation}) => {
   const {showModal} = useContext(StoreContext);
