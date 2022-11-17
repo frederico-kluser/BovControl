@@ -11,7 +11,7 @@ import checkForm from '../../utils/form';
 import getRealm, {createChecklist, updateChecklist} from '../../database/realm';
 import {StoreContext} from '../../store/context';
 
-const CreateChecklist = ({navigation, route}) => {
+const ChecklistManagement = ({navigation, route}) => {
   const {showModal} = useContext(StoreContext);
 
   const [loading, setLoading] = useState(true);
@@ -154,4 +154,4 @@ const CreateChecklist = ({navigation, route}) => {
   );
 };
 
-export default CreateChecklist;
+export default ChecklistManagement;

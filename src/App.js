@@ -14,9 +14,9 @@ import {StoreProvider} from './store/context';
 import Home from './pages/home';
 import Checklist from './pages/checklist';
 import CreateUser from './pages/createUser';
+import ChecklistManagement from './pages/ChecklistManagement';
 
 import Modal from './components/modal';
-import CreateChecklist from './pages/createChecklist';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -36,8 +36,8 @@ const App = () => {
               <Stack.Screen name="Checklist" component={Checklist} />
               <Stack.Screen name="Create User" component={CreateUser} />
               <Stack.Screen
-                name="Create Checklist"
-                component={CreateChecklist}
+                name="Checklist Management"
+                component={ChecklistManagement}
               />
             </Stack.Navigator>
             <Modal />

@@ -16,7 +16,7 @@ const Item = ({
       <ListItem.Content>
         <IconButtom
           onPress={() => {
-            navigation.navigate('Create Checklist', {id});
+            navigation.navigate('Checklist Management', {id});
           }}>
           <Icon name="pencil" type="font-awesome" />
         </IconButtom>

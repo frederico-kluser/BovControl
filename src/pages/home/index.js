@@ -67,7 +67,7 @@ const Home = ({navigation}) => {
         {checklists}
         <Button
           title="Create new checklist"
-          onPress={() => navigation.navigate('Create Checklist', {})}
+          onPress={() => navigation.navigate('Checklist Management', {})}
         />
       </Container>
     </PageContainer>
