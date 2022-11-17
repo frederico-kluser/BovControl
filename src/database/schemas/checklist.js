@@ -7,7 +7,11 @@ const ChecklistSchema = {
     farmer__name: 'string',
     farmer__city: 'string',
     from__name: 'string', // owner name ?
-    to__name: 'string?', // supervisor name ?
+    to__name: {
+      type: 'string',
+      optional: true,
+      default: '',
+    }, // supervisor name ?
     number_of_cows_head: 'int',
     had_supervision: {
       type: 'bool',

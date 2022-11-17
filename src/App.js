@@ -16,6 +16,7 @@ import Checklist from './pages/checklist';
 import CreateUser from './pages/createUser';
 
 import Modal from './components/modal';
+import CreateChecklist from './pages/createChecklist';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -34,6 +35,10 @@ const App = () => {
               <Stack.Screen name="BovControl" component={Home} />
               <Stack.Screen name="Checklist" component={Checklist} />
               <Stack.Screen name="Create User" component={CreateUser} />
+              <Stack.Screen
+                name="Create Checklist"
+                component={CreateChecklist}
+              />
             </Stack.Navigator>
             <Modal />
           </SafeAreaView>
