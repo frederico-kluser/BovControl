@@ -46,6 +46,7 @@ const updateRealm = (data, schemaName) =>
 
       realm.write(() => {
         const obj = realm.objectForPrimaryKey(schemaName, data._id);
+        data.updated_at = new Date();
         Object.assign(obj, data);
         resolve(true);
       });

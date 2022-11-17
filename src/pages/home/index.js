@@ -8,6 +8,7 @@ import getRealm from '../../database/realm';
 
 import {Button, Text} from '@rneui/themed';
 import Container from './styled';
+import {updateDB} from '../../backend/updateDB';
 
 const Home = ({navigation}) => {
   const [loading, setLoading] = React.useState(true);
@@ -51,6 +52,7 @@ const Home = ({navigation}) => {
               ),
             ),
           );
+          updateDB(realm.checklist);
         }
         setFarmer({
           name,
