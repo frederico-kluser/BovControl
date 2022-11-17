@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext} from 'react';
 
 import PageContainer from '../../components/page-container';
@@ -7,13 +8,14 @@ import {useEffect, useState} from 'react';
 import Select from '../../components/select';
 
 import checkForm from '../../utils/form';
-import getRealm, {createChecklist} from '../../database/realm';
+import getRealm, {createChecklist, updateChecklist} from '../../database/realm';
 import {StoreContext} from '../../store/context';
 
-const CreateChecklist = ({navigation}) => {
+const CreateChecklist = ({navigation, route}) => {
   const {showModal} = useContext(StoreContext);
 
   const [loading, setLoading] = useState(true);
+  const [id, setId] = useState(new Date().getTime());
   const [checklistType, setChecklistType] = useState('BPA');
   const [milkAmount, setMilkAmount] = useState(0);
   const [cowAmount, setCowAmount] = useState(0);
@@ -35,6 +37,18 @@ const CreateChecklist = ({navigation}) => {
         farmName: farm_name,
         farmCity: farm_city,
       });
+
+      if (route.params.id) {
+        const checklist = realm.checklist.find(
+          ({_id}) => _id === route.params.id,
+        );
+        setId(route.params.id);
+        setChecklistType(checklist.type);
+        setMilkAmount(String(checklist.amount_of_milk_produced));
+        setCowAmount(String(checklist.number_of_cows_head));
+        setHadSupervisor(checklist.had_supervision);
+        setSupervisorName(checklist.to__name);
+      }
     });
   }, []);
 
@@ -49,8 +63,8 @@ const CreateChecklist = ({navigation}) => {
   }, [milkAmount, cowAmount, hadSupervisor, supervisorName]);
 
   const handleCreateChecklist = async () => {
-    await createChecklist({
-      _id: new Date().getTime(),
+    const checklistValue = {
+      _id: id,
       type: checklistType,
       amount_of_milk_produced: parseInt(milkAmount),
       farmer__name: farmer.farmName,
@@ -59,8 +73,23 @@ const CreateChecklist = ({navigation}) => {
       to__name: supervisorName,
       number_of_cows_head: parseInt(cowAmount),
       had_supervision: hadSupervisor,
-    });
-    showModal('Added checklist', 'Now we can add your checklists', () => {
+    };
+    let realmOperation;
+    let modalMessage;
+    let modalTitle;
+
+    if (route.params.id) {
+      realmOperation = updateChecklist;
+      modalTitle = 'Checklist updated';
+      modalMessage = 'Checklist updated successfully';
+    } else {
+      realmOperation = createChecklist;
+      modalTitle = 'Checklist created';
+      modalMessage = 'Checklist created successfully';
+    }
+
+    await realmOperation(checklistValue);
+    showModal(modalTitle, modalMessage, () => {
       navigation.reset({
         index: 0,
         routes: [{name: 'BovControl'}],
@@ -116,7 +145,7 @@ const CreateChecklist = ({navigation}) => {
         />
       )}
       <Button
-        title="Register"
+        title={route.params.id ? 'Update' : 'Register'}
         loading={false}
         disabled={!validForm}
         onPress={handleCreateChecklist}

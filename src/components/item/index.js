@@ -1,18 +1,25 @@
 import React from 'react';
-import {ListItem} from '@rneui/themed';
-import Container from './styled';
+import {Icon, ListItem} from '@rneui/themed';
+import Container, {IconButtom} from './styled';
 
 const Item = ({
   amount_of_milk_produced,
-  _id,
   had_supervision,
+  id,
+  navigation,
   number_of_cows_head,
   to__name,
   type,
 }) => (
   <Container>
-    <ListItem key={_id} bottomDivider>
+    <ListItem bottomDivider>
       <ListItem.Content>
+        <IconButtom
+          onPress={() => {
+            navigation.navigate('Create Checklist', {id});
+          }}>
+          <Icon name="pencil" type="font-awesome" />
+        </IconButtom>
         <ListItem.Title>{type}</ListItem.Title>
         <ListItem.Subtitle>
           Number of cows head: {number_of_cows_head}

@@ -36,7 +36,26 @@ const writeRealm = (data, schemaName) =>
     }
   });
 
+const updateRealm = (data, schemaName) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const realm = await Realm.open({
+        path: 'bov.control.realm',
+        schema: [FarmerSchema, ChecklistSchema],
+      });
+
+      realm.write(() => {
+        const obj = realm.objectForPrimaryKey(schemaName, data._id);
+        Object.assign(obj, data);
+        resolve(true);
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+
 export const createFarmer = farmer => writeRealm(farmer, 'Farmer');
 export const createChecklist = checklist => writeRealm(checklist, 'Checklist');
+export const updateChecklist = checklist => updateRealm(checklist, 'Checklist');
 
 export default getRealm;

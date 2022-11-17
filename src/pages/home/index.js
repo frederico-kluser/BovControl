@@ -28,6 +28,7 @@ const Home = ({navigation}) => {
           setChecklists(
             realm.checklist.map(
               ({
+                _id,
                 amount_of_milk_produced,
                 had_supervision,
                 number_of_cows_head,
@@ -35,9 +36,12 @@ const Home = ({navigation}) => {
                 type,
               }) => (
                 <Item
+                  key={_id}
                   amount_of_milk_produced={amount_of_milk_produced}
-                  number_of_cows_head={number_of_cows_head}
                   had_supervision={had_supervision}
+                  id={_id}
+                  navigation={navigation}
+                  number_of_cows_head={number_of_cows_head}
                   to__name={to__name}
                   type={type}
                 />
